@@ -7,6 +7,13 @@ import {logger} from "../config/winston";
 
 export const loggerRouter = express.Router();
 
+loggerRouter.get('/ping', async (req, res, next) => {
+  try {
+    res.status(200).json({})
+  }
+  catch(err) { next(err) }
+})
+
 loggerRouter.post('/log', async (req, res, next) => {
   try{
       const validParams = ['level', 'message'];
